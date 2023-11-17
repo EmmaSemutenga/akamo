@@ -1,82 +1,91 @@
 package com.example.crudapp.controller;
 
+import com.example.crudapp.model.Parent;
+import com.example.crudapp.model.ResParent;
 import com.example.crudapp.model.SecurityGuard;
+import com.example.crudapp.repo.ParentRepo;
+import com.example.crudapp.repo.ResParentRepo;
 import com.example.crudapp.repo.SecurityGuardRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-
-@RestController
-public class SecurityGuardController{
+/**
+ * Controller class handling HTTP requests related to Residential Parent (ResParent) entities.
+ * Utilizes Thymeleaf templates for rendering views.
+ */
+@Controller
+public class SecurityGuardController {
     @Autowired
     private SecurityGuardRepo securityGuardRepo;
 
-    @GetMapping("/getAllSecurityGuards")
-    public ResponseEntity<List<SecurityGuard>> getAllSecurityGuards(){
-        try {
-            List<SecurityGuard> securityGuardList = new ArrayList<>();
-            securityGuardRepo.findAll().forEach(securityGuardList::add);
-
-            if (securityGuardList.isEmpty()){
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-            return new ResponseEntity<>(securityGuardList, HttpStatus.OK);
-        }catch(Exception e){
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-
-
-    }
-    @GetMapping("/getSecurityGuardId/{id}")
-    public ResponseEntity<SecurityGuard> getSecurityGuardById(@PathVariable Long id){
-
-        Optional<SecurityGuard> securityGuardData = securityGuardRepo.findById(id);
-
-        if(securityGuardData.isPresent()){
-            return new ResponseEntity<>(securityGuardData.get(), HttpStatus.OK);
-        }
-
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-    @PostMapping("/addSecurityGuard")
-    public ResponseEntity<SecurityGuard> addSecurityGuard(@RequestBody SecurityGuard securityGuard){
-        SecurityGuard securityGuardObj= securityGuardRepo.save(securityGuard);
-
-        return new ResponseEntity<>(securityGuardObj, HttpStatus.OK);
-
-    }
-    @PostMapping("/updateSecurityGuard/{id}")
-    public ResponseEntity<SecurityGuard> updateBook(@PathVariable Long id, @RequestBody SecurityGuard securityGuard) {
-        try {
-            Optional<SecurityGuard> securityGuardData = securityGuardRepo.findById(id);
-            if (securityGuardData.isPresent()) {
-                SecurityGuard updatedSecurityGuardData = securityGuardData.get();
-                updatedSecurityGuardData.setFirstName(securityGuard.getFirstName());
-                updatedSecurityGuardData.setLastName(securityGuard.getLastName());
-                updatedSecurityGuardData.setPhoneNumber(securityGuard.getPhoneNumber());
-                updatedSecurityGuardData.setEmail(securityGuard.getEmail());
-
-                SecurityGuard securityGuardObj = securityGuardRepo.save(updatedSecurityGuardData);
-                return new ResponseEntity<>(securityGuardObj, HttpStatus.CREATED);
-            }
-
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    /**
+     * Handles GET request to display a list of all Residential Parent (ResParent) entities.
+     *
+     * @param model the model to be populated and passed to the view
+     * @return the view name for listing ResParent entities
+     */
+    @GetMapping("/securityguards")
+    public String listSecurityGuards(Model model) {
+        List<SecurityGuard> securityGuardList = securityGuardRepo.findAll();
+        model.addAttribute("securityguards", securityGuardList);
+        return "list-securityguards";
     }
 
-    @DeleteMapping("/deleteSecurityGuardById/{id}")
-    public ResponseEntity<SecurityGuard> deleteSecurityGuardById(@PathVariable Long id){
+    /**
+     * Handles GET request to display the form for adding a new Residential Parent (ResParent) entity.
+     *
+     * @param model the model to be populated and passed to the view
+     * @return the view name for adding a ResParent entity
+     */
+    @GetMapping("/add-securityguard")
+    public String showSecurityGuardForm(Model model) {
+        model.addAttribute("securityguard", new SecurityGuard());
+        return "add-securityguard";
+    }
 
+    /**
+     * Handles POST request to save a new Residential Parent (ResParent) entity.
+     *
+     * @param resParent the ResParent entity to be saved
+     * @return the redirect URL to the list of ResParent entities
+     */
+    @PostMapping("/save-securityguard")
+    public String saveSecurityGuard(@ModelAttribute("securityguard") SecurityGuard securityGuard) {
+        securityGuardRepo.save(securityGuard);
+        return "redirect:/securityguards";
+    }
+
+    /**
+     * Handles GET request to display the form for editing an existing Residential Parent (ResParent) entity.
+     *
+     * @param id    the ID of the ResParent entity to be edited
+     * @param model the model to be populated and passed to the view
+     * @return the view name for editing a ResParent entity
+     */
+    @GetMapping("/edit-securityguard/{id}")
+    public String showEditSecurityGuardForm(@PathVariable Long id, Model model) {
+        SecurityGuard securityGuard = securityGuardRepo.findById(id).orElse(null);
+        model.addAttribute("securityguard", securityGuard);
+        return "edit-securityguard";
+    }
+
+    /**
+     * Handles GET request to delete an existing Residential Parent (ResParent) entity.
+     *
+     * @param id the ID of the ResParent entity to be deleted
+     * @return the redirect URL to the list of ResParent entities
+     */
+    @GetMapping("/delete-securityguard/{id}")
+    public String deleteSecurityGuard(@PathVariable Long id) {
         securityGuardRepo.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return "redirect:/securityguards";
     }
 }
 

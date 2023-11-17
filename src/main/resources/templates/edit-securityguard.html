@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head th:replace="base :: head">
+    <!-- Additional head content specific to the about page, if any -->
+</head>
+<body>
+<!-- Content specific to the about page -->
+<nav th:replace="base :: nav">
+
+</nav>
+<div class="container">
+    <!-- Content here -->
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h1>EDIT PARENT</h1>
+            <form th:action="@{/save-securityguard}" th:object="${securityguard}" method="post">
+                <input type="hidden" th:field="*{id}" />
+                <div class="mb-3">
+                    <label class="form-label">FIRSTNAME</label>
+                    <input class="form-control" type="text" aria-label="default input example" th:field="*{firstName}">
+                    <div id="emailHelp" class="form-text">Why you want to go out</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">LASTNAME</label>
+                    <input class="form-control" type="text" aria-label="default input example" th:field="*{lastName}" >
+
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">PHONE NUMBER</label>
+                    <input class="form-control" type="text" aria-label="default input example" th:field="*{phoneNumber}" >
+
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">EMAIL</label>
+                    <input class="form-control" type="email" aria-label="default input example" th:field="*{email}" >
+
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+
+    </div>
+
+</div>
+<script th:replace="base :: bottom"></script>
+</body>
+</html>
+
+
