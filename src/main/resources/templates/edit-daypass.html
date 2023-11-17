@@ -22,19 +22,25 @@
                     <div id="emailHelp" class="form-text">Why you want to go out</div>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">PARENT APPROVAL</label>
-                    <input class="form-control" type="number" aria-label="default input example" th:field="*{parent_approval}" >
-
+                    <label for="parent_approval">PARENT APPROVAL</label>
+                    <select id="parent_approval" th:field="*{parent_approval}" class="form-select" aria-label="Default select example">
+                        <option th:value="1" th:text="YES"></option>
+                        <option th:value="0" th:text="NO"></option>
+                    </select>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">RESIDENTIAL PARENT APPROVAL</label>
-                    <input class="form-control" type="number" aria-label="default input example" th:field="*{res_parent_approval}" >
-
+                    <label for="res_parent_approval">RESIDENTIAL PARENT APPROVAL</label>
+                    <select id="res_parent_approval" th:field="*{res_parent_approval}" class="form-select" aria-label="Default select example">
+                        <option th:value="1" th:text="YES"></option>
+                        <option th:value="0" th:text="NO"></option>
+                    </select>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">GUARD SIGN-OFF</label>
-                    <input class="form-control" type="number" aria-label="default input example" th:field="*{guard_sign_off}" >
-
+                    <label for="securitygurad">GUARD SIGN-OFF</label>
+                    <select id="securitygurad" th:field="*{guard_sign_off}" class="form-select" aria-label="Default select example">
+                        <option th:value="1" th:text="YES"></option>
+                        <option th:value="0" th:text="NO"></option>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">STUDENT NAME</label>

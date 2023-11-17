@@ -11,8 +11,8 @@
 <div class="container">
     <!-- Content here -->
     <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
             <h1>DAYPASS LIST</h1>
             <table class="table">
                 <tr>
@@ -36,7 +36,12 @@
                     <td th:else th:if="${daypass.res_parent_approval eq 1 }">
                         APPROVED
                     </td>
-                    <td th:text="${daypass.guard_sign_off}"></td>
+                    <td th:if="${daypass.guard_sign_off eq 0 }">
+                        NOT YET APPROVED
+                    </td>
+                    <td th:else th:if="${daypass.guard_sign_off eq 1 }">
+                        APPROVED
+                    </td>
                     <td>
                         <a th:href="@{'/edit-daypass/' + ${daypass.id}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
@@ -52,7 +57,7 @@
                 </tr>
             </table>
         </div>
-        <div class="col-md-2"></div>
+        <div class="col-md-1"></div>
     </div>
 
 </div>

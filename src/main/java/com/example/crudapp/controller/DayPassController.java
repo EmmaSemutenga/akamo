@@ -68,7 +68,7 @@ public class DayPassController {
 
 //        Student student = studentRepo.findById("102").orElse(null);
 
-//        System.out.println(student);
+        System.out.println(dayPass);
         dayPassRepo.save(dayPass);
         return "redirect:/daypasses";
     }
