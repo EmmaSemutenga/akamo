@@ -35,7 +35,7 @@ public class General {
      * @param model the model to be populated and passed to the view
      * @return the view name for listing DayPass entities
      */
-    @GetMapping("/welcome")
+    @GetMapping("/")
     public String listDayPasses(Model model) {
 //        List<DayPass> dayPassList = dayPassRepo.findAll();
 //        model.addAttribute("daypasses", dayPassList);

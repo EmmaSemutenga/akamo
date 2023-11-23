@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head th:replace="base :: head">
+    <!-- Additional head content specific to the about page, if any -->
+</head>
+<body>
+<!-- Content specific to the about page -->
+<nav th:replace="base :: nav">
+
+</nav>
+<div class="container">
+    <!-- Content here -->
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h1>LOGIN</h1>
+            <div th:if="${param.error}">
+               invalid logins
+            </div>
+            <div th:if="${param.logout}">
+               you are logged out
+            </div>
+            <form th:action="@{/login}" method="post">
+                <div class="mb-3">
+                    <label class="form-label">USERNAME</label>
+                    <input class="form-control" type="text" aria-label="default input example" name="username" >
+
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">PASSWORD</label>
+                    <input class="form-control" type="password" aria-label="default input example" name="password" >
+
+                </div>
+                <button type="submit" class="btn btn-primary" name="login-submit">LOGIN</button>
+            </form>
+
+        </div>
+        <div class="col-md-3"></div>
+
+    </div>
+</div>
+<script th:replace="base :: bottom"></script>
+</body>
+</html>
+
+
