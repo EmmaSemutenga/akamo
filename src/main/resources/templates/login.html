@@ -14,26 +14,28 @@
         <div class="col-md-3"></div>
         <div class="col-md-6">
             <h1>LOGIN</h1>
-            <div class="alert alert-danger" role="alert" th:if="${param.error}">
-               INVALID LOGINS
+            <div th:if="${message != null}" class="alert alert-success" role="alert">
+                [[${message}]]
             </div>
-            <div class="alert alert-success" role="alert" th:if="${param.logout}">
-               YOU ARE LOGGED OUT
+            <div th:if="${param.error}" class="alert alert-danger" role="alert">
+                Invalid Username or password
             </div>
-            <form th:action="@{/login}" method="post">
+            <div th:if="${param.logout}" class="alert alert-success" role="alert">
+                Logged Out Successfully
+            </div>
+            <form th:action="@{/login}"  method="post">
+
                 <div class="mb-3">
                     <label class="form-label">USERNAME</label>
-                    <input class="form-control" type="text" aria-label="default input example" name="username" >
-
+                    <input class="form-control" type="email" id="username" name = "username" aria-label="default input example" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">PASSWORD</label>
-                    <input class="form-control" type="password" aria-label="default input example" name="password" >
+                    <input class="form-control" type="password" name="password" aria-label="default input example" required>
 
                 </div>
-                <button type="submit" class="btn btn-primary" name="login-submit">LOGIN</button>
+                <button type="submit" class="btn btn-primary">Login</button>
             </form>
-
         </div>
         <div class="col-md-3"></div>
 

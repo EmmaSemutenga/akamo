@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head th:fragment="head" >
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,10 +15,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item" sec:authorize="isAuthenticated()">
+        <li class="nav-item">
           <a class="nav-link active" aria-current="page" th:href="@{/}">HOME</a>
         </li>
-        <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             DAY PASS
           </a>
@@ -27,7 +27,7 @@
             <li><a class="dropdown-item" th:href="@{/daypasses}">VIEW DAY PASSES</a></li>
           </ul>
         </li>
-        <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+        <li class="nav-item dropdown" >
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             STUDENT
           </a>
@@ -36,7 +36,7 @@
             <li><a class="dropdown-item" th:href="@{/students}">VIEW STUDENTS</a></li>
           </ul>
         </li>
-        <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+        <li class="nav-item dropdown" >
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             PARENT
           </a>
@@ -45,7 +45,7 @@
             <li><a class="dropdown-item" th:href="@{/parents}">VIEW PARENTS</a></li>
           </ul>
         </li>
-        <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+        <li class="nav-item dropdown" >
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             RESIDENTIAL PARENT
           </a>
@@ -54,7 +54,7 @@
             <li><a class="dropdown-item" th:href="@{/resparents}">VIEW RESIDENTIAL PARENTS</a></li>
           </ul>
         </li>
-        <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+        <li class="nav-item dropdown" >
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             SECURITY GUARD
           </a>
@@ -63,7 +63,7 @@
             <li><a class="dropdown-item" th:href="@{/securityguards}">VIEW SECURITY GUARDS</a></li>
           </ul>
         </li>
-        <li class="nav-item" sec:authorize="isAuthenticated()">
+        <li class="nav-item" >
           <a class="nav-link disabled" aria-disabled="true">User</a>
         </li>
         <li class="nav-item" sec:authorize="isAuthenticated()">

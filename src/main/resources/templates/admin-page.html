@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head th:replace="base :: head">
+    <!-- Additional head content specific to the about page, if any -->
+</head>
+<body>
+<!-- Content specific to the about page -->
+<nav th:replace="base :: nav">
+
+</nav>
+<div class="container">
+    <!-- Content here -->
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h1> [[${user.fullname()}]]</h1>
+            <h1>[[${!user.getAuthorities().isEmpty() ? user.getAuthorities().iterator().next().getAuthority() : "No roles found"}]]</h1>
+            <h1>[[${roleName}]]</h1>
+
+        </div>
+        <div class="col-md-3"></div>
+
+    </div>
+</div>
+<script th:replace="base :: bottom"></script>
+</body>
+</html>

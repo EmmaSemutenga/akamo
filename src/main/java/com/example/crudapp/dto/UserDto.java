@@ -1,39 +1,19 @@
-package com.example.crudapp.model;
+package com.example.crudapp.dto;
 
-import jakarta.persistence.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
-@Entity
-@Table(name = "Users", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class UserDto {
     private String email;
     private String password;
     private String role;
     private String fullname;
 
-
-
-    public User() {
+    public UserDto() {
     }
 
-    public User(String email, String password, String role, String fullname) {
+    public UserDto(String email, String password, String role, String fullname) {
         this.email = email;
         this.password = password;
         this.role = role;
         this.fullname = fullname;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getEmail() {

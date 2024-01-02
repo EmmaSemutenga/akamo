@@ -1,10 +1,6 @@
 package com.example.crudapp.model;
 
-import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;

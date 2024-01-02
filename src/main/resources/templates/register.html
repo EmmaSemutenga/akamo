@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head th:replace="base :: head">
+    <!-- Additional head content specific to the about page, if any -->
+</head>
+<body>
+<!-- Content specific to the about page -->
+<nav th:replace="base :: nav">
+
+</nav>
+<div class="container">
+    <!-- Content here -->
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h1>ADD USER</h1>
+            <div th:if="${message != null}">
+                [[${message}]]
+            </div>
+            <form th:action="@{/registration}" th:object="${user}" method="post">
+                <div class="mb-3">
+                    <label class="form-label">FULLNAME</label>
+                    <input class="form-control" type="text" aria-label="default input example" th:field="*{fullname}" required>
+                    <div id="emailHelp" class="form-text">Why you want to go out</div>
+                </div>
+                <div class="mb-3">
+                    <label for="res_parent_approval">ROLE</label>
+                    <select id="res_parent_approval" th:field="*{role}" class="form-select" aria-label="Default select example" required>
+                        <option value="ADMIN">ADMIN</option>
+                        <option value="PARENT">PARENT</option>
+                        <option value="RESPARENT">RESIDENTIAL PARENT</option>
+                        <option value="STUDENT">STUDENT</option>
+                        <option value="GUARD">GUARD</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">EMAIL</label>
+                    <input class="form-control" type="email" aria-label="default input example" th:field="*{email}" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">PASSWORD</label>
+                    <input class="form-control" type="password" aria-label="default input example" th:field="*{password}" required>
+
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+
+    </div>
+</div>
+<script th:replace="base :: bottom"></script>
+</body>
+</html>
+
+

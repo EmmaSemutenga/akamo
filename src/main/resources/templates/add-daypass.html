@@ -22,21 +22,21 @@
                 </div>
                 <div class="mb-3">
                     <label for="parent_approval">PARENT APPROVAL</label>
-                    <select id="parent_approval" th:field="*{parent_approval}" class="form-select" aria-label="Default select example">
+                    <select id="parent_approval" th:field="*{parent_approval}" class="form-select" aria-label="Default select example" disabled>
                         <option th:value="1" th:text="YES"></option>
                         <option th:value="0" th:text="NO"></option>
                     </select>
                 </div>
                 <div class="mb-3">
                     <label for="res_parent_approval">RESIDENTIAL PARENT APPROVAL</label>
-                    <select id="res_parent_approval" th:field="*{res_parent_approval}" class="form-select" aria-label="Default select example">
+                    <select id="res_parent_approval" th:field="*{res_parent_approval}" class="form-select" aria-label="Default select example" disabled>
                         <option th:value="1" th:text="YES"></option>
                         <option th:value="0" th:text="NO"></option>
                     </select>
                 </div>
                 <div class="mb-3">
                     <label for="securitygurad">GUARD SIGN-OFF</label>
-                    <select id="securitygurad" th:field="*{guard_sign_off}" class="form-select" aria-label="Default select example">
+                    <select id="securitygurad" th:field="*{guard_sign_off}" class="form-select" aria-label="Default select example" disabled>
                         <option th:value="1" th:text="YES"></option>
                         <option th:value="0" th:text="NO"></option>
                     </select>
