@@ -31,7 +31,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http.csrf(c -> c.disable())
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("/admin-page","/edit-daypass/{id}","/delete-daypass/{id}","/daypasses","/registration").hasAuthority("ADMIN")
+                        .requestMatchers("/admin-page","/edit-daypass/{id}","/delete-daypass/{id}","/daypasses","/registration","/students","/add-student","/securityguards","/add-securityguard","/resparents","/add-resparent","/parents","/add-parent").hasAuthority("ADMIN")
                         .requestMatchers("/parent-page","/edit-daypass/{id}").hasAuthority("PARENT")
                         .requestMatchers("/resparent-page","/edit-daypass/{id}").hasAuthority("RESPARENT")
                         .requestMatchers("/student-page","/add-daypass").hasAuthority("STUDENT")

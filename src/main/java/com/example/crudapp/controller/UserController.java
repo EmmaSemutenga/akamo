@@ -71,6 +71,13 @@ public class UserController {
         return "student-page";
     }
 
+    @GetMapping("/guard-page")
+    public String guard(Model model, Principal principal){
+        UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
+        model.addAttribute("user", userDetails);
+        return "guard-page";
+    }
+
     @GetMapping("/error")
     public String notAuthorisedToAccessResource(Model model, Principal principal){
         return "error-page";
