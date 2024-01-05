@@ -53,6 +53,12 @@
                         <option th:each="resparent : ${resparents}" th:value="${resparent.id}" th:text="${resparent.firstName}"></option>
                     </select>
                 </div>
+                <div class="mb-3">
+                    <label for="resparent">USER</label>
+                    <select id="user" name="user.id" th:field="*{user.id}" class="form-select" aria-label="Default select example">
+                        <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.role}"></option>
+                    </select>
+                </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>

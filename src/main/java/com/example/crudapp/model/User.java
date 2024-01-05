@@ -1,12 +1,14 @@
 package com.example.crudapp.model;
 
 import jakarta.persistence.*;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "Users", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@ToString
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

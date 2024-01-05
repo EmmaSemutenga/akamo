@@ -6,6 +6,10 @@ import lombok.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.crudapp.model.User;
+
+
+
 @Entity
 @Table(name="Parent")
 @NoArgsConstructor
@@ -36,6 +40,9 @@ public class Parent {
 
     private List<Student> students = new ArrayList<>();
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     // Getter and Setter methods for 'firstName'
     public String getFirstName() {

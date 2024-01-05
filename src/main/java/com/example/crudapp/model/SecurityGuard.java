@@ -27,6 +27,9 @@ public class SecurityGuard {
     // Email address of the security guard
     public String email;
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     // Getter and Setter methods for 'firstName'
     public String getFirstName() {
