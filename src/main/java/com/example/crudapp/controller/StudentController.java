@@ -1,11 +1,13 @@
 package com.example.crudapp.controller;
 
 import com.example.crudapp.model.Parent;
+import com.example.crudapp.model.User;
 import com.example.crudapp.model.ResParent;
 import com.example.crudapp.model.Student;
 import com.example.crudapp.repo.ParentRepo;
 import com.example.crudapp.repo.ResParentRepo;
 import com.example.crudapp.repo.StudentRepo;
+import com.example.crudapp.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +31,9 @@ public class StudentController {
 
     @Autowired
     private ResParentRepo resParentRepo;
+
+    @Autowired
+    private UserRepository userRepository;
 
     /**
      * Handles GET request to retrieve all Student entities.
@@ -56,6 +61,8 @@ public class StudentController {
         model.addAttribute("parents", parentList);
         List<ResParent> resParentList = resParentRepo.findAll();
         model.addAttribute("resparents", resParentList);
+        List<User> userList = userRepository.findAll();
+        model.addAttribute("users", userList);
         return "add-student";
     }
 
@@ -88,6 +95,8 @@ public class StudentController {
         model.addAttribute("parents", parentList);
         List<ResParent> resParentList = resParentRepo.findAll();
         model.addAttribute("resparents", resParentList);
+        List<User> userList = userRepository.findAll();
+        model.addAttribute("users", userList);
 
         return "edit-student";
     }

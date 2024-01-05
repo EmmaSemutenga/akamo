@@ -36,6 +36,11 @@ public class ResParent {
     )
     private List<Student> students;
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+
     // Getter and Setter methods for 'firstName'
     public String getFirstName() {
         return firstName;
