@@ -55,6 +55,11 @@ public class Student {
     )
     private ResParent resparent;
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+
     // Getter and Setter methods for 'firstName'
     public String getFirstName() {
         return firstName;

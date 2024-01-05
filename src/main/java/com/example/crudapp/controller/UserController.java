@@ -33,7 +33,7 @@ public class UserController {
 //        Long id;
 //        System.out.println(userService.getUserById(1L).getEmail());
 //        return "redirect:/login";
-        return "redirect:/login";
+        return "register";
     }
 
     @GetMapping("/login")
