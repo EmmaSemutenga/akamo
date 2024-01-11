@@ -22,6 +22,7 @@ import java.util.List;
  */
 @Controller
 public class DayPassController {
+//    stacks are applied to the request processing flow in Spring MVC, specifically when handling HTTP requests in controllers
 
     @Autowired
     private DayPassRepo dayPassRepo;
@@ -70,7 +71,7 @@ public class DayPassController {
 
         System.out.println(dayPass);
         dayPassRepo.save(dayPass);
-        return "redirect:/daypasses";
+        return "redirect:/add-daypass";
     }
 
     /**

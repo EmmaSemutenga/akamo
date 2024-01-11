@@ -31,11 +31,12 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http.csrf(c -> c.disable())
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("/admin-page","/edit-daypass/{id}","/delete-daypass/{id}","/daypasses","/registration","/students","/add-student","/securityguards","/add-securityguard","/resparents","/add-resparent","/parents","/add-parent").hasAuthority("ADMIN")
-                        .requestMatchers("/parent-page","/edit-daypass/{id}").hasAuthority("PARENT")
-                        .requestMatchers("/resparent-page","/edit-daypass/{id}").hasAuthority("RESPARENT")
+                        .requestMatchers("/admin-page","/registration","/add-student","/students","/securityguards","/add-securityguard","/resparents","/add-resparent","/parents","/add-parent","/delete-daypass/{id}").hasAuthority("ADMIN")
+                        .requestMatchers("/edit-daypass/{id}","/daypasses").hasAnyAuthority("ADMIN","PARENT","RESPARENT","GUARD")
+                        .requestMatchers("/parent-page").hasAuthority("PARENT")
+                        .requestMatchers("/resparent-page").hasAuthority("RESPARENT")
                         .requestMatchers("/student-page","/add-daypass").hasAuthority("STUDENT")
-                        .requestMatchers("/guard-page","/edit-daypass/{id}").hasAuthority("GUARD")
+                        .requestMatchers("/guard-page").hasAuthority("GUARD")
 //                        .requestMatchers("/registration").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(form -> form.loginPage("/login").loginProcessingUrl("/login").successHandler(customSuccessHandler).permitAll())

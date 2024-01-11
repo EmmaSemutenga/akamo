@@ -19,6 +19,8 @@ public class DayPass {
 
     // Reason for the day pass
     private String reason;
+    private String leave_time;
+    private String return_time;
 
 
 
@@ -26,6 +28,22 @@ public class DayPass {
     private int parent_approval;
     private int res_parent_approval;
     private int guard_sign_off;
+
+    public String getLeave_time() {
+        return leave_time;
+    }
+
+    public void setLeave_time(String leave_time) {
+        this.leave_time = leave_time;
+    }
+
+    public String getReturn_time() {
+        return return_time;
+    }
+
+    public void setReturn_time(String return_time) {
+        this.return_time = return_time;
+    }
 
     // Many-to-One relationship with Student entity
     @ManyToOne

@@ -47,6 +47,38 @@
                         <option th:each="student : ${students}" th:value="${student.id}" th:text="${student.firstName}"></option>
                     </select>
                 </div>
+                <div class="mb-3">
+                    <label class="form-label">LEAVE TIME</label>
+                    <select id="leave_time" name="student.id" th:field="*{leave_time}" class="form-select" aria-label="Default select example" disabled>
+                        <option th:value="'8 AM'">8 AM</option>
+                        <option th:value="'9 AM'">9 AM</option>
+                        <option th:value="'10 AM'">10 AM</option>
+                        <option th:value="'11 AM'">11 AM</option>
+                        <option th:value="'12 PM'">12 PM</option>
+                        <option th:value="'1 PM'">1 PM</option>
+                        <option th:value="'2 PM'">2 PM</option>
+                        <option th:value="'3 PM'">3 PM</option>
+                        <option th:value="'4 PM'">4 PM</option>
+                        <option th:value="'5 PM'">5 PM</option>
+                        <option th:value="'6 PM'">6 PM</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">RETURN TIME</label>
+                    <select id="return_time" th:field="*{return_time}" class="form-select" aria-label="Default select example" disabled>
+                        <option th:value="'8 AM'">8 AM</option>
+                        <option th:value="'9 AM'">9 AM</option>
+                        <option th:value="'10 AM'">10 AM</option>
+                        <option th:value="'11 AM'">11 AM</option>
+                        <option th:value="'12 PM'">12 PM</option>
+                        <option th:value="'1 PM'">1 PM</option>
+                        <option th:value="'2 PM'">2 PM</option>
+                        <option th:value="'3 PM'">3 PM</option>
+                        <option th:value="'4 PM'">4 PM</option>
+                        <option th:value="'5 PM'">5 PM</option>
+                        <option th:value="'6 PM'">6 PM</option>
+                    </select>
+                </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>

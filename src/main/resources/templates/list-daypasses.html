@@ -20,6 +20,8 @@
                     <th scope="col">PARENT APPROVAL</th>
                     <th scope="col">RESIDENTIAL PARENT APPROVAL</th>
                     <th scope="col">SECURITY GUARD SIGNOFF</th>
+                    <th scope="col">LEAVE TIME</th>
+                    <th scope="col">RETURN TIME</th>
                     <th scope="col">ACTIONS</th>
                 </tr>
                 <tr th:each="daypass : ${daypasses}">
@@ -42,6 +44,8 @@
                     <td th:else th:if="${daypass.guard_sign_off eq 1 }">
                         APPROVED
                     </td>
+                    <td th:text="${daypass.leave_time}"></td>
+                    <td th:text="${daypass.return_time}"></td>
                     <td>
                         <a th:href="@{'/edit-daypass/' + ${daypass.id}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">

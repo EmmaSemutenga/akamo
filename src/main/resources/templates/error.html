@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head th:replace="base :: head">
+    <!-- Additional head content specific to the about page, if any -->
+</head>
+<body>
+<!-- Content specific to the about page -->
+<nav th:replace="base :: nav">
+
+</nav>
+<div class="container">
+    <!-- Content here -->
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h1>Error</h1>
+            <p>Please note that you not authroised to view this page. Kindly consult the Admin</p>
+            <p>Go to home page <a th:href="@{/}">HOME</a> </p>
+        </div>
+        <div class="col-md-3"></div>
+
+    </div>
+</div>
+<script th:replace="base :: bottom"></script>
+</body>
+</html>
+
+
